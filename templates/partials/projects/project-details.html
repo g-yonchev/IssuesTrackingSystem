@@ -1,0 +1,63 @@
+<div class="container">
+    <h1>Project Page</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4 text-justify">
+            <h3>
+                <strong>{{project.ProjectKey}}</strong>
+                <a href="#/projects/{{project.Id}}/edit" class="btn btn-success">Edit</a>
+                <a href="#/projects/{{project.Id}}/add-issue" class="btn btn-info">Add Issue</a>
+            </h3>
+            <h5>
+                <strong>Project Key:</strong>
+                <span>{{project.ProjectKey}}</span>
+            </h5>
+            <h5>
+                <strong>Name:</strong>
+                <span>{{project.Name}}</span>
+            </h5>
+            <h5>
+                <strong>Description:</strong>
+                <span>{{project.Description}}</span>
+            </h5>
+            <h5>
+                <strong>Lead:</strong>
+                <span>{{project.Lead.Username}}</span>
+                <br>
+                <i>(id: {{project.Lead.Id}})</i>
+            </h5>
+
+            <h5>
+                <strong>Labels:</strong>
+                <i>{{project.Labels}}</i>
+            </h5>
+
+            <h5>
+                <strong>Priorities:</strong>
+                <i>{{project.Priorities}}</i>
+            </h5>
+        </div>
+
+        <div class="col-md-8">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Issues</h3>
+                </div>
+                <div class="panel-body">
+                    <div ng-hide="issues && issues.length > 0">No Issues</div>
+
+                    <div ng-show="issues && issues.length > 0">
+                        <div all-issues />
+                        <span ng-repeat="p in [] | range:totalPages">
+                            <button ng-click="selectedPage(p)" class="btn bg-primary">{{p + 1}}</button>
+                        </span>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

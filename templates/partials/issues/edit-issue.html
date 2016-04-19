@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="well">
+        <form name="editIssueForm" class="form-horizontal">
+            <fieldset>
+                <legend>Edit Issue</legend>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">For Project</label>
+                    <div class="col-md-10">
+                        <div class="form-control" ng-disabled="true">
+                            {{issue.Project.Name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="col-md-2 control-label">Title</label>
+                    <div class="col-md-10">
+                        <input id="title" type="text" placeholder="Title" ng-model="issue.Title" required="required" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="col-md-2 control-label">Description</label>
+                    <div class="col-md-10">
+                        <textarea id="description" placeholder="Description" rows="5" ng-model="issue.Description" required="required" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="assigneeId" class="col-lg-2 control-label">Assignee</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" ng-model="assigneeId" required="required" id="assigneeId">
+                            <option ng-repeat="user in users" value="{{user.Id}}">
+                                {{user.Username}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="priorityId" class="col-lg-2 control-label">Priority</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" ng-model="issue.PriorityId" required="required" id="priorityId">
+                            <option ng-repeat="priority in project.Priorities" value="{{priority.Id}}">
+                                {{priority.Name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Due Date</label>
+                    <div class="col-md-10">
+                        <md-content>
+                            <md-datepicker ng-model="issue.DueDate" md-placeholder="{{issue.DueDate | dateEditFilter}}"></md-datepicker>
+                        </md-content>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <button ng-click="editIssue(issue, assigneeId)" ng-disabled="editIssueForm.$invalid" class="btn btn-primary">
+                        Edit
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

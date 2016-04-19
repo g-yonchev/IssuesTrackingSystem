@@ -1,0 +1,18 @@
+<table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th class="text-center">
+            Project
+        </th>
+        <th class="text-center">
+            Lead
+        </th>
+    </tr>
+    <tr ng-repeat="project in projects">
+        <td class="text-center">
+            <a href="#/projects/{{project.Id}}">{{project.Name}}</a>
+        </td>
+        <td class="text-center">
+            {{project.Lead.Username}}
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="well">
+        <form name="editProjectForm" class="form-horizontal">
+            <fieldset>
+                <legend>Edit Project</legend>
+
+                <div class="form-group">
+                    <label for="name" class="col-md-2 control-label">Name</label>
+                    <div class="col-md-10">
+                        <input id="name" type="text" value="{{project.Name}}" ng-model="project.Name" required="required" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectKey" class="col-md-2 control-label">Project Key</label>
+                    <div class="col-md-10">
+                        <input id="projectKey" type="text" placeholder="Project Key" ng-disabled="true" ng-model="project.ProjectKey" required="required" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="col-md-2 control-label">Description</label>
+                    <div class="col-md-10">
+                        <textarea id="description" placeholder="Description" rows="5" ng-model="project.Description" required="required" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="leadId" class="col-lg-2 control-label">Leader</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" ng-model="leadId" required="required" id="leadId">
+                            <option ng-repeat="user in users" value="{{user.Id}}">
+                                {{user.Username}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <button ng-click="editProject(project, leadId)" ng-disabled="editProjectForm.$invalid" class="btn btn-primary">
+                        Edit
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

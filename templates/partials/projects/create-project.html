@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="well">
+        <form name="createProjectForm" class="form-horizontal">
+            <fieldset>
+                <legend>Create New Project</legend>
+                <div class="form-group">
+                    <label for="name" class="col-md-2 control-label">Name</label>
+                    <div class="col-md-10">
+                        <input id="name" type="text" placeholder="Name" ng-model="project.Name" required="required" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="col-md-2 control-label">Description</label>
+                    <div class="col-md-10">
+                        <textarea id="description" placeholder="Description" ng-model="project.Description" required="required" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="leadId" class="col-lg-2 control-label">Leader</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" ng-model="project.LeadId" required="required" id="leadId">
+                            <option ng-repeat="user in users" value="{{user.Id}}">
+                                {{user.Username}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="priorities" class="col-md-2 control-label">Priorities (separated by coma): </label>
+                    <div class="col-md-10">
+                        <input id="priorities" type="text" placeholder="Priorities" ng-model="project.Priorities" required="required" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="label" class="col-md-2 control-label">Label</label>
+                    <div class="col-md-10">
+                        <input id="label" ng-change="filterLabels(project.Label)" type="text" placeholder="Start typing..." ng-model="project.Label" required="required" class="form-control autocomplete" />
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <button ng-click="createProject(project)" ng-disabled="createProjectForm.$invalid" class="btn btn-primary">
+                        Create
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

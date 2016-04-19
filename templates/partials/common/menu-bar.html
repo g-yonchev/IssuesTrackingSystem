@@ -1,0 +1,15 @@
+<ul ng-show="identity.isAuthenticated()" ng-controller="MenuController" class="nav navbar-nav">
+    <li>
+        <a href="#/">Dashboard</a>
+    </li>
+
+    <li ng-show="isAdmin">
+        <a href="#/users">All Users</a>
+    </li>
+    <li ng-show="isAdmin">
+        <a href="#/projects">All Projects</a>
+    </li>
+    <li ng-show="isAdmin">
+        <a href="#/projects/add">Add Project</a>
+    </li>
+</ul>
